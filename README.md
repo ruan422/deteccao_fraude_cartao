@@ -48,7 +48,7 @@ O `GridSearchCV` escolheu `max_depth=5` e `n_estimators=100`, que são os mesmos
 | Limiar | Precisão | Recall | F1 |
 |---|---|---|---|
 | 0,5 | 0,860 | 0,622 | 0,722 |
-| 0,3 (usado na aula) | 0,795 | 0,655 | 0,719 |
+| 0,3 | 0,795 | 0,655 | 0,719 |
 | 0,1 | 0,752 | 0,716 | 0,734 |
 
 Baixar o limiar fez o recall subir (de 0,62 para 0,72) e a precisão cair (de 0,86 para 0,75), como o esperado. Escolhi **0,1**, porque teve o maior recall e o maior F1 entre os três. O custo é mais falsos alarmes. Se o objetivo fosse incomodar o mínimo de clientes legítimos, o 0,5 seria melhor. Escolhi o limiar olhando o próprio teste, o que é uma limitação.
