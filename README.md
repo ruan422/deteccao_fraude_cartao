@@ -63,9 +63,9 @@ Baixar o limiar fez o recall subir (de 0,62 para 0,72) e a precisão cair (de 0,
 - **Balanceamento:** neste teste, usar pesos de classe (como no Random Forest) funcionou melhor do que equilibrar os dados. Isso vale para esta base e esta divisão, e a única forma de saber é testar.
 - **Explicabilidade:** poucas variáveis (V16, V11, V10) concentram a decisão do modelo, o que ajuda a justificar por que uma transação foi marcada como fraude.
 
-## O que mudei em relação ao que a Expert fez
+## O que mudei em relação ao que a professora fez
 
-Pelo que vi nas aulas, as diferenças do meu notebook foram:
+Essas foram as diferenças do meu notebook:
 
 - **Balanceamento só no treino:** apliquei undersampling e oversampling (SMOTE) apenas no conjunto de treino e avaliei no mesmo teste original, para os resultados serem comparáveis com os outros modelos.
 - **Mais de um limiar:** além de 0,3, testei 0,5 e 0,1 e comparei os três lado a lado.
@@ -73,26 +73,5 @@ Pelo que vi nas aulas, as diferenças do meu notebook foram:
 - **Tabela comparativa e resumo automático:** guardei as métricas de todos os modelos em uma tabela e gerei, no fim, um resumo com o melhor modelo em recall, precisão e F1, os melhores parâmetros do GridSearch e as variáveis mais importantes do SHAP.
 - **SHAP no modelo ajustado:** expliquei o XGBoost escolhido pelo `GridSearchCV`, com gráfico de barras e gráfico de dispersão (*beeswarm*).
 
-## Comparação com os resultados da aula
 
-Valores citados pela instrutora (não são os meus):
 
-| Modelo | Precisão | Recall | F1 |
-|---|---|---|---|
-| Regressão Logística | 0,87 | 0,68 | 0,77 |
-| Random Forest | | 0,76 | 0,79 |
-| Pipeline com limiar 0,3 | 0,86 | 0,71 | |
-| XGBoost | 0,93 | 0,78 | 0,85 |
-
-Meus resultados ficaram próximos dos dela na regressão logística e no Random Forest (recall 0,76 e F1 0,80, contra 0,76 e 0,79). O XGBoost ficou abaixo do dela (recall 0,72 e F1 0,78, contra 0,78 e 0,85), possivelmente porque os parâmetros que usei são diferentes dos dela, que eu não vi. Na aula, o `GridSearchCV` escolheu `max_depth=3` e as variáveis mais importantes no SHAP foram V4 e V14. No meu caso foram `max_depth=5` e V16, V11 e V10.
-
-## Limitações
-
-- A padronização de `Amount` foi feita antes da divisão treino/teste, como nas aulas. O ideal é ajustar o scaler só no treino.
-- Os limiares foram comparados no próprio conjunto de teste.
-- Os resultados vêm de uma única divisão dos dados, com apenas 148 fraudes no teste, então pequenas diferenças entre modelos podem não ser significativas.
-
-## Como rodar
-
-1. Abra o notebook no Google Colab.
-2. Vá em `Ambiente de execução` → `Executar tudo`.
